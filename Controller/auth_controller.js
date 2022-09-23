@@ -12,7 +12,7 @@ exports.getAllCredential=(req, res)=>{
         }
     })
 }
-
+////hello
 exports.getAllCredentialById=(req, res)=>{
     let id=req.params.id;
     let commands=`select * from auth where id=${id}`;
