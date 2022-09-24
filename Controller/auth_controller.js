@@ -3,8 +3,8 @@ const dbCon = require('../DBHandler/dbConnection');
 
 exports.getAllCredential=(req, res)=>{
     let commands='select * from auth';
-    dbCon.query(commands, (err, row ,field)=>{
-        if(err){
+    dbCon.query(commands, (err, row ,field)=>{8
+        if(err){      
             console.log(err);
         }else{
             console.log(row);
@@ -12,7 +12,7 @@ exports.getAllCredential=(req, res)=>{
         }
     })
 }
-////hello
+
 exports.getAllCredentialById=(req, res)=>{
     let id=req.params.id;
     let commands=`select * from auth where id=${id}`;
