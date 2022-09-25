@@ -1,9 +1,8 @@
 const sql = require('./dbConnection');
 
-exports.getAllUsers=function(){
-    console.log("2---------");
+exports.getAllSeller=function(){
     return new Promise(resolve=>{
-         let command="select * from e_commerce_site.users";
+         let command="select * from e_commerce_site.seller";
          sql.query(command,(err, rows, fields)=>{
             if(err){console.log('err', err)}
              resolve(rows);
@@ -11,9 +10,9 @@ exports.getAllUsers=function(){
      }) 
  };
 
- exports.getAllUserById=function(id){
+ exports.getSellerById=function(id){
   return new Promise(resolve=>{
-    let command = `select * from e_commerce_site.users where userID=${id}`;
+    let command = `select * from seller where sellerId=${id}`;
     sql.query(command,(err, rows, fields)=>{
         if(err){console.log('err', err)}
         resolve(rows);
@@ -21,10 +20,10 @@ exports.getAllUsers=function(){
   })  
 }
 
-exports.deleteById=function(id){
+exports.deleteSellerById=function(id){
      //sqlMessage: 'Cannot delete or update a parent row: a foreign key constraint fails (`e_commerce_site`.`orders`, CONSTRAINT `FK_user_order` FOREIGN KEY (`orderUserID`) REFERENCES `users` (`userID`))'
     return new Promise(resolve=>{
-        let command = `delete from users where userID=${id}`;
+        let command = `delete from seller where sellerId=${id}`;
         sql.query(command,(err, rows, fields)=>{
             if(err){
                 console.log('err ', err);
@@ -34,17 +33,12 @@ exports.deleteById=function(id){
     })
 }
 
-exports.updateUserById=function(req,id){
+exports.updateSellerById=function(req,id){
     return new Promise(resolve=>{
-        //const {userID,userEmail,userPassword,userFirstName,userLastName,userCity,userState,userZip,userRegistrationDate,userPhone,userCountry,userAddress}=req.body;
         let items=req.body;
-        // let dataProp=[];
-        // for (const item in items) {
-        //    dataProp.push(item);
-        //   }
         let dataValue=Object.values(items);
+        let command ='update seller set sellerId=?,comapanyName=?,companyBranch=?,email=?,contactNo=?,location=? where sellerId='+id;
         
-        let command = `update users set userID=?,userEmail=?,userPassword=?,userFirstName=?,userLastName=?,userCity=?,userState=?,userZip=?,userRegistrationDate=?,userPhone=?,userCountry=?,userAddress=? where userID=`+id;
         sql.query(command,dataValue, (err, rows, fields)=>{
             if(err){
                 console.log(err);
@@ -54,11 +48,11 @@ exports.updateUserById=function(req,id){
     })
 }
 
-exports.userRegister=function(req){
+exports.sellerRegister=function(req){
     return new Promise(resolve=>{
         let items=req.body;
         let data = Object.values(items);
-        let command =`insert into users() values (?,?,?,?,?,?,?,?,?,?,?,?)`;
+        let command =`insert into seller() values (?,?,?,?,?,?)`;
         sql.query(command,data, (err, rows , fields)=>{
             if(err){
                 console.log('err ', err);
