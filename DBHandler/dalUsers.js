@@ -1,32 +1,30 @@
 const sql = require('./dbConnection');
-
-exports.getAllUsers=function(){
-    console.log("2---------");
-    return new Promise(resolve=>{
-         let command="select * from e_commerce_site.users";
-         sql.query(command,(err, rows, fields)=>{
-            if(err){console.log('err', err)}
-             resolve(rows);
-         })
-     }) 
- };
-
- exports.getAllUserById=function(id){
-  return new Promise(resolve=>{
-    let command = `select * from e_commerce_site.users where userID=${id}`;
-    sql.query(command,(err, rows, fields)=>{
-        if(err){console.log('err', err)}
-        resolve(rows);
+const payment =require('./dalPayment');
+exports.getAllUsers = function () {
+    return new Promise(resolve => {
+        let command = "select * from e_commerce_site.users";
+        sql.query(command, (err, rows, fields) => {
+            if (err) { console.log('err', err) }
+            resolve(rows);
+        })
     })
-  })  
+};
+
+exports.getAllUserById = function (id) {
+    return new Promise(resolve => {
+        let command = `select * from e_commerce_site.users where userId=${id}`;
+        sql.query(command, (err, rows, fields) => {
+            if (err) { console.log('err', err) }
+            resolve(rows);
+        })
+    })
 }
 
-exports.deleteById=function(id){
-     //sqlMessage: 'Cannot delete or update a parent row: a foreign key constraint fails (`e_commerce_site`.`orders`, CONSTRAINT `FK_user_order` FOREIGN KEY (`orderUserID`) REFERENCES `users` (`userID`))'
-    return new Promise(resolve=>{
-        let command = `delete from users where userID=${id}`;
-        sql.query(command,(err, rows, fields)=>{
-            if(err){
+exports.deleteById = function (id) {
+        return new Promise(resolve => {
+        let command = `delete from users where userId=${id}`;
+        sql.query(command, (err, rows, fields) => {
+            if (err) {
                 console.log('err ', err);
             }
             resolve(rows)
@@ -34,19 +32,13 @@ exports.deleteById=function(id){
     })
 }
 
-exports.updateUserById=function(req,id){
-    return new Promise(resolve=>{
-        //const {userID,userEmail,userPassword,userFirstName,userLastName,userCity,userState,userZip,userRegistrationDate,userPhone,userCountry,userAddress}=req.body;
-        let items=req.body;
-        // let dataProp=[];
-        // for (const item in items) {
-        //    dataProp.push(item);
-        //   }
-        let dataValue=Object.values(items);
-        
-        let command = `update users set userID=?,userEmail=?,userPassword=?,userFirstName=?,userLastName=?,userCity=?,userState=?,userZip=?,userRegistrationDate=?,userPhone=?,userCountry=?,userAddress=? where userID=`+id;
-        sql.query(command,dataValue, (err, rows, fields)=>{
-            if(err){
+exports.updateUserById = function (req, id) {
+    return new Promise(resolve => {
+        let items = req.body;
+        let dataValue = Object.values(items);
+        let command = `update users set userEmail=?,userPassword=?,userFullName=?,userContactNo=?,userAddress=?,userRole=? where userId=` + id;
+        sql.query(command, dataValue, (err, rows, fields) => {
+            if (err) {
                 console.log(err);
             }
             resolve(rows);
@@ -54,17 +46,66 @@ exports.updateUserById=function(req,id){
     })
 }
 
-exports.userRegister=function(req){
-    return new Promise(resolve=>{
-        let items=req.body;
+exports.userRegister = function (req) {
+    return new Promise(resolve => {
+        let items = req.body;
         let data = Object.values(items);
-        let command =`insert into users() values (?,?,?,?,?,?,?,?,?,?,?,?)`;
-        sql.query(command,data, (err, rows , fields)=>{
-            if(err){
+        let command = `insert into users(userEmail,userPassword,userFullName,userContactNo,userAddress,userRole) values (?,?,?,?,?,?)`;
+        sql.query(command, data, (err, rows, fields) => {
+            if (err) {
                 console.log('err ', err);
             }
-            resolve(rows );
+            resolve(rows);
         })
     })
-
 }
+
+exports.userlogin = function (req) {
+    return new Promise(resolve => {
+        let email = req.body.userEmail;
+        let password = req.body.userPassword;
+        console.log("emial " + email + " " + password);
+        let commands = `select * from users where userEmail="${email}" and userPassword="${password}"`;
+        sql.query(commands, (err, rows, field) => {
+            if (err) {
+                console.log("error in login ", err);
+            }
+            resolve(rows);
+        })
+    })
+}
+
+// exports.addToCart = function (req) {
+//     return new Promise(resolve => {
+//         let items = req.body;
+//         let data = Object.values(items);
+//         let commands = `insert into cart() values(?,?,?,?)`;
+//         sql.query(commands, data, (err, rows, field) => {
+//             if (err) {
+//                 console.log("error ", err);
+//             }
+//             resolve(rows);
+//         })
+//     })
+// }
+
+// //get all cart details
+// exports.getCartDetail = function() {
+//     return new Promise(resolve => {
+//         let commands = `select * from cart`;
+//         sql.query(commands,(err, rows, field) => {
+//             if (err) {
+//                 console.log("error ", err);
+//             }
+//             resolve(rows);
+//         })
+//     })
+// }
+
+// exports.orderplaced= function(){
+//     return new Promise(resolve =>{
+//         let commands ="select * from payment where"
+//     })
+// }
+
+
