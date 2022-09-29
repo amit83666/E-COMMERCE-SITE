@@ -1,0 +1,3 @@
+------------------------------------payment poin of view ----------------
+
+user will add the payment in the payment the table and payment send the transaction no to the oder table.

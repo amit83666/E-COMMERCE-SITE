@@ -1,0 +1,14 @@
+------------------------vendor point of view----------------------------------
+POST    Add vendor detail
+GET     Get vendor detail
+POST    LOGIN vendor
+DELETE  Delete vendor detail and detail by id 
+DELETE  Delete seller detail and delete user 
+UPDATE  Update seller detail by seller id
+
+GET     Get itemdetails(cart)
+GET     Get  Address of userId
+GET     Get  itemdetails of particular customer of product
+POST    status will be add by vendor affter delivery of product to user
+ 
+

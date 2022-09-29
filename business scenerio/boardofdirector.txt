@@ -1,0 +1,12 @@
+--------------------------------board of directors-----------------------------------
+GET get the order details so they how much order will be sold( payment , quantity of products, )
+
+GET how manny new user conected
+
+GET how many users purchase the things
+
+GET which product will sold more/ category and many things
+
+
+
+

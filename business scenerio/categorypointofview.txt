@@ -1,0 +1,4 @@
+-----------------category point of view -----------------
+POST add category by seller if the category is not present
+
+seller will handle the category detail or might be in future admin will take responsibilty.
