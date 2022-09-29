@@ -1,0 +1,19 @@
+-------------------seller point of view-------------------------
+POST    Add seller detail
+GET     Get seller detail
+POST    LOGIN seller
+DELETE  Delete seller detail and detail by id 
+DELETE  Delete seller detail and delete user 
+UPDATE  Update seller detail by seller id
+GET     Get his products by category 
+GET     Get all items from product table by seller id
+POST    add product in the product table with seller id
+UPDATE  Update product detail by id
+DELETE  Delete product detail by id
+
+---------------------seller firstly add the category if the category is not present in the category table------
+POST    Add category by seller id 
+DELETE  Delete category by sellerid
+update  Update category by sellerid
+get     Get all category by sellerid 
+

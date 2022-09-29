@@ -1,0 +1,30 @@
+
+----------------------------CRUD for user Profile---------------------------
+POST    Register/signup
+POST    LOGIN
+GET     Get his own Profile
+UPDATE  Update User Profile
+DELETE  Delete User Account
+
+---------------------------find Product by categories-----------------------
+GET     product by category
+GET     product by title name
+GET     product by id
+
+---------------------------add to cart--------------------------------------
+POST    Add to cart
+GET     Get cart all item detail
+GET     Get cart item by id       
+UPDATE  Update cart item by id 
+DELETE  Delete cart item by id
+DELETE  Empty the full cart
+
+----------------------------order the product-------------------------------
+POST    order the product by product by id
+GET     Get the order details
+POST    Cancel the ordered product by id
+GET     Get the status of the order product like in processing etc
+GET     Track the order 
+---------------------------payment of the oder item -------------------------
+POST    payment by the orderdetail id
+GET     Get Payment History all / Get payment history by id

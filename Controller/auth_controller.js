@@ -3,7 +3,7 @@ const dbCon = require('../DBHandler/dbConnection');
 
 exports.getAllCredential=(req, res)=>{
     let commands='select * from auth';
-    dbCon.query(commands, (err, row ,field)=>{8
+    dbCon.query(commands, (err, row ,field)=>{
         if(err){      
             console.log(err);
         }else{

@@ -66,6 +66,8 @@ insert into payments(paymentId,orderId,orderDetailId,tranctionId,paymentMode,amo
 select *  from payments;
 
 
+-- HELLO MR AMIT 
+
 
 
 

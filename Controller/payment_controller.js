@@ -26,5 +26,8 @@ exports.deletePaymentReceiptById=async function(req, res){
 exports.payment=async function(req, res){
     let result=[];
     result= await dal.payment(req);
+    let id=req.body
+
+    console.log("result ", result);
     res.send(result);
 }

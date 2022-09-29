@@ -51,7 +51,7 @@ exports.payment=function(req){
     return new Promise(resolve=>{
         let items=req.body;
         let data = Object.values(items);
-        let command =`insert into payment() values (?,?,?,?,?)`;
+        let command =`insert into payment() values (?,?,?,?,?,?)`;
         sql.query(command,data, (err, rows , fields)=>{
             if(err){
                 console.log('err ', err);
