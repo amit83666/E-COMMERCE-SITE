@@ -14,8 +14,8 @@ GET     product by id
 ---------------------------add to cart--------------------------------------
 POST    Add to cart
 GET     Get cart all item detail
-GET     Get cart item by id       
-UPDATE  Update cart item by id 
+GET     Get cart item by id     //not applicable  
+UPDATE  Update cart item by id  //not apllicable
 DELETE  Delete cart item by id
 DELETE  Empty the full cart
 

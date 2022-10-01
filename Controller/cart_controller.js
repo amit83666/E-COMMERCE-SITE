@@ -11,33 +11,24 @@ exports.getCart=(req, res)=>{
    }
 };
 
-// exports.addToCart=function(req,res){
-//    let item={"productid": req.params.id, quantity:1};
-//    req.session.cart.push(item);
-//    res.send(req.session.cart);
-//    res.end();
-// };
-
-// productId 
-// title 
-// description
-// quantity ,unitprice 
-// categoryId
-// sellerId 
-
 exports.addToCart = function(req,res){
-   let items=req.body;
-   req.session.cart.push(items);
-   res.send(req.session.cart);
-   res.end();
+   if(req.session.cart){
+      let data={
+         "id":req.params.id
+      };
+      let items=req.body;
+      let amit = Object.assign(data, items);
+      req.session.cart.push(amit);
+      res.send(req.session.cart);
+      res.end();
+   }else{
+      res.send("firstly create a cart then you can add ");
+   }
+   
 }
 
-// exports.addtoCartByID=function(req,res){
-//    let 
-// }
-
 exports.removefromcartById=function(req,res){ 
-   req.session.cart=req.session.cart.filter((data)=>(data.productid !=req.params.id))
+   req.session.cart=req.session.cart.filter((data)=>(data.id !=req.params.id))
    res.send(req.session.cart);
    res.end();
 };
