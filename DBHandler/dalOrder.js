@@ -12,7 +12,7 @@ exports.getOrder=function(){
 
 exports.getOrderById=function(id){
     return new Promise(resolve=>{
-        let command = 'select * from orders where orderID='+id;
+        let command = 'select * from orders where orderId='+id;
         sql.query(command,(err, rows, fields)=>{
             if(err){console.log('err ', err)}
             resolve(rows);       
@@ -22,7 +22,9 @@ exports.getOrderById=function(id){
 
 exports.deleteOrderById=function(id){
     return new Promise(resolve=>{
-        let command = 'delete from orders where orderID='+id;
+        let command = 'delete from orders where orderId='+id;
+
+        //firstly delete the item details,.
         sql.query(command,(err, rows, fields)=>{
             if(err){console.log('err ', err)};
             resolve(rows);
@@ -30,23 +32,25 @@ exports.deleteOrderById=function(id){
     })
 }
 
-exports.updateOrderById = function(req,id){
-    return new Promise(resolve=>{
-    let command='update orders set orderID=?,orderUserID=?,orderAmount=?,orderShipName=?,orderShipAddress=?,orderCity=?,oderState=?,orderZip=?,orderCountry=?,orderPhone=?,orderShipping=?,orderTax=?,orderEmail=?,orderDate=?,orderShipped=?,orderTrackingNo=? where orderID='+id;
-    let items = req.body;
-    let data = Object.values(items);
-    sql.query(command,data,(err, rows, fields)=>{
-        if(err){console.log('err ', err)};
-            resolve(rows);        
-    })
-})
-}
+//not required yet
+// exports.updateOrderById = function(req,id){
+//     return new Promise(resolve=>{
+//         orderId,orderDate,userId,status
+//     let command='update orders set  where orderID='+id;
+//     let items = req.body;
+//     let data = Object.values(items);
+//     sql.query(command,data,(err, rows, fields)=>{
+//         if(err){console.log('err ', err)};
+//             resolve(rows);        
+//     })
+// })
+// }
 
 exports.orderRegister=function(req){
     return new Promise(resolve=>{
         let items=req.body;
         let data = Object.values(items);
-        let command =`insert into orders() values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+        let command =`insert into orders(userId) values (?)`;
         sql.query(command,data, (err, rows , fields)=>{
             if(err){
                 console.log('err ', err);
@@ -54,5 +58,4 @@ exports.orderRegister=function(req){
             resolve(rows );
         })
     })
-
 }
