@@ -5,8 +5,10 @@ const dal = require('../DBHandler/dalProduct');
 exports.getAllProduct=async function(req, res){
     let result=[];
     result = await dal.getAllProduct();
-    console.log('seller ',result);
-    res.send(result);
+    res.render('../views/product', {result:result});
+    
+    //console.log('seller ',result);
+    //res.send(result);
 }
 
 exports.getProductById=async function(req, res){

@@ -1,8 +1,16 @@
 const session = require('express-session');
 const dal = require('../DBHandler/dalUsers');
 const ejs = require('ejs');
+
+exports.landing=function(req, res){
+    res.render('../views/landing');
+}
 exports.signup= function(req, res){
 res.render('../views/signup');
+}
+exports.login=function(req, res){
+    res.render('../views/login');
+    
 }
 
 exports.getAllUsers = async function (req, res) {
@@ -53,7 +61,7 @@ exports.userRegister = async function (req, res) {
     let result = [];
     result = await dal.userRegister(req);
     res.render('../views/signup',result);
-    //res.send("successfully registered ");
+    res.send("successfully registered ");
 }
 
 exports.userlogin = async function (req, res) {
@@ -66,7 +74,8 @@ exports.userlogin = async function (req, res) {
         //res.send("credential are wrong...");
     } else {
        let amit = req.session.user.push(emaill);
-        res.send("successfully login ");
+       res.redirect('/api/product');
+       //res.send("successfully login ");
     }
   //  res.send("some thing wrong");
 }

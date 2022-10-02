@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Ecommerce page</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    </head>
+    <style>
+        body {
+            padding-top: 70px;}
+        .row .flex {
+            display: inline-flex;
+            width: 100%;}
+        img {
+            width:100%;
+            min-height:100px;}
+    </style>
+<body>
+
+<div class="container certer ">
+<h1>Login Page</h1>
+<form action="/api/user/login" method="POST">
+    <input type="text" placeholder="Email" name="userEmail"><br><br>
+    <input type="text" placeholder="password" name="userPassword"><br><br>   
+    <button>Submit</button> 
+</form>
+    <a href="/api/landingpage"> Go Back</a>
+</div>
+    </body>
+    </html>

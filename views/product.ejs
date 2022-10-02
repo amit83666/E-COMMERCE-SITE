@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Ecommerce page</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    </head>
+    <style>
+        body {
+            padding-top: 70px;}
+        .row .flex {
+            display: inline-flex;
+            width: 100%;}
+        img {
+            width:100%;
+            min-height:100px;}
+    </style>
+<body>
+
+<div class="container certer ">
+<h1>Product Page</h1>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">productId</th>
+        <th scope="col">title</th>
+        <th scope="col">description</th>
+        <th scope ="col">quantity</th>
+        <th scope ='col'>unitPrice</th>
+        <th scope = 'col'>categoryId</th>
+        <th scope = 'col'>sellerId</th>
+      </tr>
+    </thead>
+    <tbody>
+            <% result.forEach(function(item){ %>
+        <tr>
+        <th scope="row"><%=item.productId%></th>
+        <td><%= item.title%></td>
+        <td><%= item.description%></td>
+        <td><%= item.quantity%></td>
+        <td><%= item.unitprice%></td>
+        <td><%= item.categoryId%></td>
+        <td><%= item.sellerId%></td>
+      </tr>
+      <% }); %>
+        </tbody>
+<a href="/api/landingpage"> Go Back</a>
+</div>
+    </body>
+    </html>

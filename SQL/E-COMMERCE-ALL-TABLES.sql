@@ -37,6 +37,7 @@ category varchar(50) not null,
 sellerId int not null,
 constraint sellerCategoryFK foreign key (sellerId) references sellers(sellerId)
 );
+
 desc category;
 
 create table products(
@@ -50,6 +51,7 @@ sellerId int not null,
 constraint categoryProductFK foreign key (categoryId) references categories(categoryId),
 constraint sellerProductFK foreign key (sellerId) references sellers(sellerId)
 );
+select * from products where title="redmi";
 desc products;
 
 create table orders(
@@ -70,6 +72,7 @@ amount varchar(50) not null,
 constraint OrderItemdetailFK foreign key (orderId) references orders(orderId),
 constraint productItemdetailFK foreign key (productId) references products(productId)
 );
+select * from itemDetails;
 desc itemDetails;
 
 create table payments(
