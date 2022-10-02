@@ -1,5 +1,6 @@
 const sql = require('./dbConnection');
 
+//user point of view
 exports.getAllProduct=function(){
     return new Promise(resolve=>{
          let command="select * from e_commerce_site.products";
@@ -10,6 +11,7 @@ exports.getAllProduct=function(){
      }) 
  };
 
+//user point of view
  exports.getProductById=function(id){
   return new Promise(resolve=>{
     let command = `select * from products where productId=`+id;
@@ -19,7 +21,7 @@ exports.getAllProduct=function(){
     })
   })  
 }
-
+//seller point of view
 exports.deleteProductById=function(id){
         return new Promise(resolve=>{
         let command = `delete from products where productId=`+id;
@@ -31,7 +33,7 @@ exports.deleteProductById=function(id){
         })
     })
 }
-
+//seller point of view
 exports.updateProductById=function(req,id){
     return new Promise(resolve=>{
         let items=req.body;
@@ -45,7 +47,7 @@ exports.updateProductById=function(req,id){
         })
     })
 }
-
+//seller point of view
 exports.productRegister=function(req){
     return new Promise(resolve=>{
         let items=req.body;
@@ -60,3 +62,21 @@ exports.productRegister=function(req){
     })
 
 }
+//user point of view
+exports.getProductByName=function(title){
+    return new Promise(resolve=>{
+        let command = `select * from products where title="${title}"`;
+        sql.query(command,(err, rows, fields)=>{
+        if(err){console.log('err', err)}
+        resolve(rows);       
+    })
+})}
+//user point of view
+exports.getProductByCategory=function(categoryId){
+    return new Promise(resolve=>{
+        let command = `select * from products where categoryId=`+ categoryId;
+    sql.query(command,(err, rows, fields)=>{
+        if(err){console.log('err', err)}
+        resolve(rows);       
+    })
+})}
