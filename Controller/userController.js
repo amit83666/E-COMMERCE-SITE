@@ -1,5 +1,9 @@
 const session = require('express-session');
 const dal = require('../DBHandler/dalUsers');
+const ejs = require('ejs');
+exports.signup= function(req, res){
+res.render('../views/signup');
+}
 
 exports.getAllUsers = async function (req, res) {
     let result = [];
@@ -48,7 +52,8 @@ exports.deleteById = async function (req, res) {
 exports.userRegister = async function (req, res) {
     let result = [];
     result = await dal.userRegister(req);
-    res.send("successfully registered ");
+    res.render('../views/signup',result);
+    //res.send("successfully registered ");
 }
 
 exports.userlogin = async function (req, res) {

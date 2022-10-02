@@ -2,6 +2,7 @@ const userController = require("../Controller/userController");
 
 
 module.exports = function(app){
+    app.route('/api/signup').get(userController.signup);
     app.route('/api/user').get(userController.getAllUsers);
     app.route('/api/user/:id').get(userController.getAllUserById)
                               .delete(userController.deleteById)
