@@ -13,12 +13,14 @@ exports.getCart=(req, res)=>{
 
 exports.addToCart = function(req,res){
    if(req.session.cart){
-      let data={
-         "id":req.params.id
-      };
+      // let data={
+      //    "id":req.params.id
+      // };
+      //orderId,productId,quantity,amount
       let items=req.body;
-      let amit = Object.assign(data, items);
-      req.session.cart.push(amit);
+      console.log("session ", req.session.cart);
+      //let amit = Object.assign(data, items);
+      req.session.cart.push(items);
       res.send(req.session.cart);
       res.end();
    }else{

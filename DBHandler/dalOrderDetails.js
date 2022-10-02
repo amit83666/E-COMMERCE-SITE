@@ -46,8 +46,11 @@ exports.deleteOrderdetailsById=function(id){
 
 exports.orderdetailsRegister=function(req){
     return new Promise(resolve=>{
-        let items=req.body;
+        let items=req.session.cart[0];
+        console.log("item ", items);
         let data = Object.values(items);
+        console.log("data ",data);
+        
         let command =`insert into itemDetails(orderId,productId,quantity,amount) values (?,?,?,?)`;
         sql.query(command,data, (err, rows , fields)=>{
             if(err){
