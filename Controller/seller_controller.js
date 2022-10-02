@@ -1,33 +1,50 @@
 const dal = require('../DBHandler/dalSeller');
-//const { response } = require('express');
 
-
-exports.getAllSeller=async function(req, res){
-    console.log("1-------");
-    let result=[];
-    result = await dal.getAllSeller();
-    console.log('seller ',result);
-    res.send(result);
-}
-
-exports.getSellerById=async function(req, res){
+exports.getAllSeller = async function (req, res) {
     let result = [];
-    result = await dal.getSellerById(req.params.id);
-    res.send(result);
-}
-exports.updateSellerById=async function(req, res){   
-    let result = [];
-    result = await dal.updateSellerById(req,req.params.id);
-    res.send(result);
-}
-exports.deleteSellerById=async function(req, res){
-    let result = [];
-    result = await dal.deleteSellerById(req.params.id);
-    res.send(result);
+    let session = req.session;
+    if (session.user) {
+        result = await dal.getAllSeller();
+        console.log("see ", result);
+        res.send(result);
+    } else {
+        res.send("please logion first ");
+    }
 }
 
-exports.sellerRegister=async function(req, res){
-    let result=[];
-    result= await dal.sellerRegister(req);
+exports.getSellerById = async function (req, res) {
+    let result = [];
+    let session = req.session;
+    if (session.user) {
+        result = await dal.getSellerById(req.params.id);
+        res.send(result);
+    } else {
+        res.send("please logion first ");
+    }
+}
+exports.updateSellerById = async function (req, res) {
+    let result = [];
+    let session = req.session;
+    if (session.user) {
+        result = await dal.updateSellerById(req, req.params.id);
+        res.send(result);
+    } else {
+        res.send("please logion first ");
+    }
+}
+exports.deleteSellerById = async function (req, res) {
+    let result = [];
+    let session = req.session;
+    if (session.user) {
+        result = await dal.deleteSellerById(req.params.id);
+        res.send(result);
+    } else {
+        res.send("please logion first ");
+    }
+}
+
+exports.sellerRegister = async function (req, res) {
+    let result = [];
+    result = await dal.sellerRegister(req);
     res.send(result);
 }

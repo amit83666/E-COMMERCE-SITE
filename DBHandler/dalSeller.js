@@ -2,7 +2,7 @@ const sql = require('./dbConnection');
 
 exports.getAllSeller=function(){
     return new Promise(resolve=>{
-         let command="select * from e_commerce_site.seller";
+         let command="select * from e_commerce_site.sellers";
          sql.query(command,(err, rows, fields)=>{
             if(err){console.log('err', err)}
              resolve(rows);
@@ -12,7 +12,7 @@ exports.getAllSeller=function(){
 
  exports.getSellerById=function(id){
   return new Promise(resolve=>{
-    let command = `select * from seller where sellerId=${id}`;
+    let command = `select * from sellers where sellerId=${id}`;
     sql.query(command,(err, rows, fields)=>{
         if(err){console.log('err', err)}
         resolve(rows);
@@ -21,9 +21,8 @@ exports.getAllSeller=function(){
 }
 
 exports.deleteSellerById=function(id){
-     //sqlMessage: 'Cannot delete or update a parent row: a foreign key constraint fails (`e_commerce_site`.`orders`, CONSTRAINT `FK_user_order` FOREIGN KEY (`orderUserID`) REFERENCES `users` (`userID`))'
     return new Promise(resolve=>{
-        let command = `delete from seller where sellerId=${id}`;
+        let command = `delete from sellers where sellerId=${id}`;
         sql.query(command,(err, rows, fields)=>{
             if(err){
                 console.log('err ', err);
@@ -37,8 +36,7 @@ exports.updateSellerById=function(req,id){
     return new Promise(resolve=>{
         let items=req.body;
         let dataValue=Object.values(items);
-        let command ='update seller set sellerId=?,comapanyName=?,companyBranch=?,email=?,contactNo=?,location=? where sellerId='+id;
-        
+        let command ='update sellers set accountNo=?,gstin=? where sellerId='+id;  
         sql.query(command,dataValue, (err, rows, fields)=>{
             if(err){
                 console.log(err);
@@ -52,7 +50,7 @@ exports.sellerRegister=function(req){
     return new Promise(resolve=>{
         let items=req.body;
         let data = Object.values(items);
-        let command =`insert into seller() values (?,?,?,?,?,?)`;
+        let command =`insert into sellers(sellerId,userId,accountNo,gstin) values (?,?,?,?)`;
         sql.query(command,data, (err, rows , fields)=>{
             if(err){
                 console.log('err ', err);
@@ -60,5 +58,4 @@ exports.sellerRegister=function(req){
             resolve(rows );
         })
     })
-
 }
