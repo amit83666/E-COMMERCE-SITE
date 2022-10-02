@@ -14,7 +14,7 @@ exports.getCategoryById=async function(req,res){
 
 exports.deleteCategoryById=async function(req,res){
     let result=[];
-    result=await dal.deleteCategoryById();
+    result=await dal.deleteCategoryById(req.params.id);
     res.send(result);
 }
 exports.updateCategoryById=async function(req,res){

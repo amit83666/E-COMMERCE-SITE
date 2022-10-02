@@ -1,7 +1,6 @@
 const express= require('express');
 const expressSession=require('express-session');
 
-const authRoutes = require('./Router/auth_router');
 const userRoutes = require('./Router/user_router');
 const orderRoutes= require('./Router/order_route');
 const sellerRoutes = require('./Router/seller_router');
@@ -25,8 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 const port = 3000;
 
-
-authRoutes(app);
 userRoutes(app);
 orderRoutes(app);
 sellerRoutes(app);
