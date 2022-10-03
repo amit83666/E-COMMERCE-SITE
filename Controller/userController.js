@@ -1,5 +1,6 @@
 const session = require('express-session');
 const dal = require('../DBHandler/dalUsers');
+const jwt = require('jsonwebtoken');
 const ejs = require('ejs');
 
 exports.landing=function(req, res){
@@ -63,7 +64,7 @@ exports.userRegister = async function (req, res) {
     res.render('../views/signup',result);
     res.send("successfully registered ");
 }
-
+let jwtSecretKey='amit'
 exports.userlogin = async function (req, res) {
     let result = [];
     req.session.user = [];
@@ -74,8 +75,9 @@ exports.userlogin = async function (req, res) {
         //res.send("credential are wrong...");
     } else {
        let amit = req.session.user.push(emaill);
-       res.redirect('/api/product');
-       //res.send("successfully login ");
+       let token=jwt.sign(emaill,jwtSecretKey);
+       //res.redirect('/api/product');
+       res.status(200).send(token);
     }
   //  res.send("some thing wrong");
 }

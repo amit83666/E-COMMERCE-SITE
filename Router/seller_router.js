@@ -2,6 +2,7 @@ const sellerController = require("../Controller/seller_controller");
 
 
 module.exports = function(app){
+    app.route('/api/addseller').get(sellerController.addSeller);
     app.route('/api/seller').get(sellerController.getAllSeller);
     app.route('/api/seller/:id').get(sellerController.getSellerById)
                               .delete(sellerController.deleteSellerById)

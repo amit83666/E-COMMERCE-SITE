@@ -1,5 +1,6 @@
 const express= require('express');
 const expressSession=require('express-session');
+const cors=require('cors');
 
 const userRoutes = require('./Router/user_router');
 const orderRoutes= require('./Router/order_route');
@@ -9,7 +10,7 @@ const categoryRoutes = require('./Router/category_router');
 const orderDetailsRoutes = require('./Router/orderDetail_routes');
 const paymentRoutes = require('./Router/payment_router');
 const cartRoutes = require('./Router/cart_router');
-
+require('dotenv').config();
 const app=express();
 const oneDay = 1000 * 60 * 60 * 24;
 var sessionMiddlware=expressSession({
@@ -18,6 +19,7 @@ var sessionMiddlware=expressSession({
     cookie: { maxAge: oneDay },
     resave: false 
 });
+app.use(cors());
 app.use(sessionMiddlware);
 app.set('view engine','ejs');
 

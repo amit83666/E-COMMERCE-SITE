@@ -1,5 +1,8 @@
 const dal = require('../DBHandler/dalSeller');
 
+exports.addSeller=async function(req, res){
+    res.render();
+}
 exports.getAllSeller = async function (req, res) {
     let result = [];
     let session = req.session;
