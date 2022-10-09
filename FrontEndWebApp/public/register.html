@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Register Page</title> 
+    <head><title>Ecommerce page</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="/scripts/jquery-3.2.1.min.js"></script>
+    <script src="/scripts/app.js"></script>
     </head>
-    <body>
-        <h1>Registration page</h1>
-        <hr/>
-        <a href="index.html">Home</a> | <a href="list.html">Catalog</a>|<a href="login.html">SignIn</a>|<a href="register.html">SIGNUP</a>
-        <hr/>
-        <div>
-            
-        </div>
+    <style>
+        body {
+            padding-top: 70px;}
+        .row .flex {
+            display: inline-flex;
+            width: 100%;}
+        img {
+            width:100%;
+            min-height:100px;}
+    </style>
+<body>
+
+<div class="container certer ">
+<h1>Sign up Page</h1>
+<div>
+    <div>
+    <input type="email" placeholder="Email" id="email" name="userEmail"><br><br>
+    <input type="text" placeholder="password" id="password" name="userPassword"><br><br>
+    <input type="text" placeholder="userFullName" id="fullname" name="userFullName"><br><br>
+    <input type="text" placeholder="userContactNo" id="contact" name="userContactNo"><br><br>
+    <input type="text" placeholder="userAddress" id="address" name="userAddress"><br><br>
+    <input type="text" placeholder="userRole" id="role" name="userRole"></br></br>
+    <button onclick="forSignup()">submit</button>
+    </div>
+</div>
+    <a href="/api/landingpage"> Go Back</a>
+</div>
     </body>
-</html>
+    </html>          

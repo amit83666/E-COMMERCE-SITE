@@ -18,9 +18,37 @@ var onLogin=()=>{
             console.log(status);
             console.log(data);
             localStorage.setItem("receivedtoken",data);  //browsers cache memory
+            window.location.href = "http://localhost:7000";
         }
     });
 }
+var forSignup=()=>{
+    let userEmail=document.getElementById("email").value;
+    let userPassword=document.getElementById("password").value;
+    let userFullName=document.getElementById("fullname").value;
+    let userContact=document.getElementById("contact").value;
+    let userAddress=document.getElementById("address").value;
+    let userRole=document.getElementById("role").value;
+    let signupcred={};
+    signupcred.userEmail=userEmail;
+    signupcred.userPassword=userPassword;
+    signupcred.userFullName=userFullName;
+    signupcred.userContact=userContact;
+    signupcred.userAddress=userAddress;
+    signupcred.userRole=userRole;
+    console.log("signupcred ", signupcred );
+    let loginUrl="http://localhost:3000/api/user/register";
+    $.ajax({
+        url: loginUrl,
+        type:"POST",
+        data:signupcred,
+        success: (data, status)=>{
+            console.log("on successfull signup");
+            console.log(status);
+            console.log(data);
+           window.location.href = "http://localhost:7000";
+        }
+    });}
 var fetchData=()=>{
    // alert("button is clicked.....");
     let url="http://localhost:3000/api/product";
@@ -31,21 +59,25 @@ var fetchData=()=>{
     $.ajax({
         dataType: "json",
         url: url,
-
         success: (data)=>{
-            console.log("invokiking cvallbacjk function on oooo");
             console.log(data);
-            let strData=JSON.stringify(data)
-            //alert(strData);
-           /* let para1=document.getElementById("para");
-            para1.innerHTML=strData;
-            */
-            //DOM tree Manipulation Code at Client Side
+            let strData=JSON.stringify(data);
             let productList=document.getElementById("productList");
             for(var i=0;i<data.length;i++){
-                const node = document.createElement("li");
-                const textnode = document.createTextNode(data[i].title);
-                node.appendChild(textnode);
+                const node = document.createElement("tr");
+                const textnodeID = document.createTextNode(data[i].productId);
+                const textnodeTitle = document.createTextNode(data[i].title);
+                const textnodeDescription = document.createTextNode(data[i].description);
+                const textnodequantity = document.createTextNode(data[i].quantity);
+                const textnodeUnitPrice = document.createTextNode(data[i].unitprice);
+                const textnodecategoryID = document.createTextNode(data[i].categoryId);
+                
+                node.appendChild(textnodeID);
+                node.appendChild(textnodeTitle);
+                node.appendChild(textnodeDescription);
+                node.appendChild(textnodequantity);
+                node.appendChild(textnodeUnitPrice);
+                node.appendChild(textnodecategoryID);
                 productList.appendChild(node);
             }  
         }

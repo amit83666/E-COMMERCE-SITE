@@ -1,16 +1,16 @@
-const express= require('express');
-const expressSession=require('express-session');
-const cors=require('cors');
+import express from 'express';
+import expressSession from 'express-session';
+import cors from 'cors';
 
-const userRoutes = require('./Router/user_router');
-const orderRoutes= require('./Router/order_route');
-const sellerRoutes = require('./Router/seller_router');
-const productRoutes = require('./Router/product_router');
-const categoryRoutes = require('./Router/category_router');
-const orderDetailsRoutes = require('./Router/orderDetail_routes');
-const paymentRoutes = require('./Router/payment_router');
-const cartRoutes = require('./Router/cart_router');
-require('dotenv').config();
+import userRoutes from './Router/user_router.js';
+// import orderRoutes from './Router/order_route.js';
+// import sellerRoutes from'./Router/seller_router.js';
+// import productRoutes from './Router/product_router.js';
+// import categoryRoutes from './Router/category_router.js';
+// import orderDetailsRoutes from './Router/orderDetail_routes.js';
+// import paymentRoutes from './Router/payment_router.js';
+// import cartRoutes from './Router/cart_router.js';
+//require('dotenv').config();
 const app=express();
 const oneDay = 1000 * 60 * 60 * 24;
 var sessionMiddlware=expressSession({
@@ -28,13 +28,13 @@ app.use(express.urlencoded({extended:true}));
 const port = 3000;
 
 userRoutes(app);
-orderRoutes(app);
-sellerRoutes(app);
-productRoutes(app);
-categoryRoutes(app);
-orderDetailsRoutes(app);
-paymentRoutes(app);
-cartRoutes(app);
+// orderRoutes(app);
+// sellerRoutes(app);
+// productRoutes(app);
+// categoryRoutes(app);
+// orderDetailsRoutes(app);
+// paymentRoutes(app);
+// cartRoutes(app);
 
 app.listen(port,()=>{
     console.log(`server is listening on port no. ${port}`);

@@ -1,5 +1,5 @@
 
-const dal=require('../DBHandler/dalOrder');
+import dal from '../DBHandler/dalOrder';
 
 exports.getOrder=async function(req, res){
     let result=[];

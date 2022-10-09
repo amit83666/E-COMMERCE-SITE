@@ -1,7 +1,7 @@
-const {response}= require('express');
-const orderController = require('../Controller/order_controller');
+import {response} from 'express';
+import orderController from '../Controller/order_controller';
 
-module.exports=function(app){
+export default function(app){
     app.route('/api/order').get(orderController.getOrder);
     app.route('/api/order/:id').get(orderController.getOrderById)
                                 .delete(orderController.deleteOrderById)

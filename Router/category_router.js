@@ -1,6 +1,6 @@
 const categoryController = require("../Controller/category_controller");
 
-module.exports=function(app){
+export default function(app){
     app.route('/api/category').get(categoryController.getCategory);
     app.route('/api/category/:id').get(categoryController.getCategoryById)
                                 .delete(categoryController.deleteCategoryById)

@@ -1,6 +1,6 @@
 const cartController = require('../Controller/cart_controller');
 
-module.exports = function (app) {
+export default  function (app) {
     app.route('/api/cart').get(cartController.getCart);
     app.route('/api/cart/:id').post(cartController.addToCart)
                               .delete(cartController.removefromcartById)
