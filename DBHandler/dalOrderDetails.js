@@ -1,6 +1,6 @@
-const sql = require('./dbConnection');
-
-exports.getOrderDetaila=function(){
+import sql from './dbConnection.js';
+export default class orderdetaildal {  
+getOrderDetaila=function(){
     return new Promise(resolve=>{
         let command=`select * from itemDetails`;
         sql.query(command,(err, rows, fields)=>{
@@ -10,7 +10,7 @@ exports.getOrderDetaila=function(){
     })
 }
 
-exports.getOrderDetailsById=function(id){
+getOrderDetailsById=function(id){
     return new Promise(resolve=>{
         let command = 'select * from itemDetails where orderDetailId='+id;
         sql.query(command,(err, rows, fields)=>{
@@ -20,7 +20,7 @@ exports.getOrderDetailsById=function(id){
     })
 }
 
-exports.deleteOrderdetailsById=function(id){
+deleteOrderdetailsById=function(id){
     return new Promise(resolve=>{
         let command = 'delete from itemDetails where orderDetailId='+id;
         sql.query(command,(err, rows, fields)=>{
@@ -44,7 +44,7 @@ exports.deleteOrderdetailsById=function(id){
 // })
 // }
 
-exports.orderdetailsRegister=function(req){
+orderdetailsRegister=function(req){
     return new Promise(resolve=>{
         let items=req.session.cart[0];
         console.log("item ", items);
@@ -59,4 +59,4 @@ exports.orderdetailsRegister=function(req){
             resolve(rows );
         })
     })
-}
+}}

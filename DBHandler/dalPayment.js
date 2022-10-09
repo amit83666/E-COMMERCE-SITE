@@ -1,6 +1,7 @@
-const sql = require('./dbConnection');
+import sql from './dbConnection.js';
 
-exports.getAllpaymentReceipt=function(){
+export default class paymentdal {  
+getAllpaymentReceipt=function(){
     return new Promise(resolve=>{
          let command="select * from e_commerce_site.payment";
          sql.query(command,(err, rows, fields)=>{
@@ -10,7 +11,7 @@ exports.getAllpaymentReceipt=function(){
      }) 
  };
 
- exports.getPaymentReceiptById=function(id){
+getPaymentReceiptById=function(id){
   return new Promise(resolve=>{
     let command = `select * from payment where payId=`+id;
     sql.query(command,(err, rows, fields)=>{
@@ -20,7 +21,7 @@ exports.getAllpaymentReceipt=function(){
   })  
 }
 
-exports.deletePaymentReceiptById=function(id){
+deletePaymentReceiptById=function(id){
         return new Promise(resolve=>{
         let command = `delete from payment where payId=`+id;
         sql.query(command,(err, rows, fields)=>{
@@ -32,7 +33,7 @@ exports.deletePaymentReceiptById=function(id){
     })
 }
 
-exports.updatePaymentReceiptById=function(req,id){
+updatePaymentReceiptById=function(req,id){
     return new Promise(resolve=>{
         let items=req.body;
         let dataValue=Object.values(items);
@@ -47,7 +48,7 @@ exports.updatePaymentReceiptById=function(req,id){
     })
 }
 
-exports.payment=function(req){
+payment=function(req){
     return new Promise(resolve=>{
         let items=req.body;
         let data = Object.values(items);
@@ -60,4 +61,4 @@ exports.payment=function(req){
         })
     })
 
-}
+}}

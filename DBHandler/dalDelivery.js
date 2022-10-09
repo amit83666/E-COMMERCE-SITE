@@ -1,6 +1,7 @@
-const sql = require('./dbConnection');
+import sql from './dbConnection.js';
 
-exports.getDelivery=function(){
+export default class deliverydal {  
+getDelivery=function(){
     return new Promise(resolve=>{
         let command=`select * from orders`;
         sql.query(command,(err, rows, fields)=>{
@@ -10,7 +11,7 @@ exports.getDelivery=function(){
     })
 }
 
-exports.getDeliveryStatusById=function(id){
+getDeliveryStatusById=function(id){
     return new Promise(resolve=>{
         let command = 'select * from orders where orderID='+id;
         sql.query(command,(err, rows, fields)=>{
@@ -20,7 +21,7 @@ exports.getDeliveryStatusById=function(id){
     })
 }
 
-exports.deleteOrderById=function(id){
+deleteOrderById=function(id){
     return new Promise(resolve=>{
         let command = 'delete from orders where orderID='+id;
         sql.query(command,(err, rows, fields)=>{
@@ -30,7 +31,7 @@ exports.deleteOrderById=function(id){
     })
 }
 
-exports.updateOrderById = function(req,id){
+updateOrderById = function(req,id){
     return new Promise(resolve=>{
     let command='update orders set orderID=?,orderUserID=?,orderAmount=?,orderShipName=?,orderShipAddress=?,orderCity=?,oderState=?,orderZip=?,orderCountry=?,orderPhone=?,orderShipping=?,orderTax=?,orderEmail=?,orderDate=?,orderShipped=?,orderTrackingNo=? where orderID='+id;
     let items = req.body;
@@ -42,7 +43,7 @@ exports.updateOrderById = function(req,id){
 })
 }
 
-exports.orderRegister=function(req){
+orderRegister=function(req){
     return new Promise(resolve=>{
         let items=req.body;
         let data = Object.values(items);
@@ -55,4 +56,4 @@ exports.orderRegister=function(req){
         })
     })
 
-}
+}}

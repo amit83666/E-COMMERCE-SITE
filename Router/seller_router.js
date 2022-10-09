@@ -1,7 +1,8 @@
-const sellerController = require("../Controller/seller_controller");
+import Controller from "../Controller/seller_controller.js";
 
 
 export default function(app){
+    const sellerController= new Controller();
     app.route('/api/addseller').get(sellerController.addSeller);
     app.route('/api/seller').get(sellerController.getAllSeller);
     app.route('/api/seller/:id').get(sellerController.getSellerById)

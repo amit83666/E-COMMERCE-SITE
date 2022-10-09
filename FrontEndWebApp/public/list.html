@@ -6,14 +6,19 @@
         <script src="/scripts/app.js"></script>
     </head>
     <body>
-        <h1>Transflower Store</h1>
+        <h1>product list</h1>
         <hr/>
         <a href="index.html">Home</a> | <a href="list.html">Catalog</a>|<a href="login.html">SignIn</a>
         <hr/>
         <div>
              <h2>Todays products for sale</h2>
              <button onclick="fetchData()">Get Products</button>
-             <table class="table table-bordered">
+
+             <div id="productList">
+              
+
+             </div>
+             <!-- <table class="table table-bordered"> -->
                 <!-- <thead class="thead-dark">
                   <tr>
                     <th scope="col">productId</th>
@@ -25,17 +30,18 @@
                     <th scope = 'col'>sellerId</th>
                   </tr>
                 </thead> -->
-                <tbody>
-                    <tr id="productList">
-                        
-                           
-                        
+                <!-- <tbody>
+                    <tr >
+                      <td id="productList"></br></td>
+                       <td id="productList2"></td></br>
+                       <td id="productList3"> </td></br>
+                       <td id="productList4"></td></br>
+                       <td id="productList5"></td></br>
+                       <td id="productList6"></td></br>
                     </tr>
                    
-                    </tbody>
-            
-             
-             <p id="para"></p>
+                    </tbody> -->
+            <p id="para"></p>
         </div>
     </body>
 </html>

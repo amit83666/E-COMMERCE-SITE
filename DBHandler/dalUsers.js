@@ -3,7 +3,7 @@ import sql from './dbConnection.js';
 //const payment = require('./dalPayment');
 
 
-export default class userdal {
+export default class userdal {                          
     // constructor() {
 
     // }   

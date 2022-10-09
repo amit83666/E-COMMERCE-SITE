@@ -1,5 +1,5 @@
-
-exports.getCart=(req, res)=>{  
+export default class cartController {
+getCart=(req, res)=>{  
     if(req.session.cart){
        res.send(req.session.cart);
        res.end();
@@ -11,7 +11,7 @@ exports.getCart=(req, res)=>{
    }
 };
 
-exports.addToCart = function(req,res){
+addToCart = function(req,res){
    if(req.session.cart){
       // let data={
       //    "id":req.params.id
@@ -29,16 +29,16 @@ exports.addToCart = function(req,res){
    
 }
 
-exports.removefromcartById=function(req,res){ 
+removefromcartById=function(req,res){ 
    req.session.cart=req.session.cart.filter((data)=>(data.id !=req.params.id))
    res.send(req.session.cart);
    res.end();
 };
 
-exports.checkout=function(req,res){
+checkout=function(req,res){
    req.session.destroy((err)=>{
        console.log( "session is destroyed");
        res.send("session is destroyed is explicitly");
        res.end();
    })
-}
+}}

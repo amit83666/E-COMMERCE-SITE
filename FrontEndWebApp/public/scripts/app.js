@@ -64,13 +64,18 @@ var fetchData=()=>{
             let strData=JSON.stringify(data);
             let productList=document.getElementById("productList");
             for(var i=0;i<data.length;i++){
-                const node = document.createElement("tr");
+                const node = document.createElement("div");
                 const textnodeID = document.createTextNode(data[i].productId);
                 const textnodeTitle = document.createTextNode(data[i].title);
                 const textnodeDescription = document.createTextNode(data[i].description);
                 const textnodequantity = document.createTextNode(data[i].quantity);
                 const textnodeUnitPrice = document.createTextNode(data[i].unitprice);
                 const textnodecategoryID = document.createTextNode(data[i].categoryId);
+
+                const addtocart = document.createElement("button");
+                addtocart.innerHTML="ADD TO CART";
+                addtocart.onclick=addToCart;
+
                 
                 node.appendChild(textnodeID);
                 node.appendChild(textnodeTitle);
@@ -78,10 +83,16 @@ var fetchData=()=>{
                 node.appendChild(textnodequantity);
                 node.appendChild(textnodeUnitPrice);
                 node.appendChild(textnodecategoryID);
+                node.appendChild(addtocart);
                 productList.appendChild(node);
             }  
         }
       });
+
+      var addToCart=function(){
+        alert("hello");
+
+      }
     //on receive data dynamically append products names to existing HTML page
     //DOM Manipulation
 

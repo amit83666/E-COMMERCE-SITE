@@ -1,7 +1,7 @@
-const {response}= require('express');
-const productController = require('../Controller/product_controller');
+import Controller from '../Controller/product_controller.js';
 
 export default function(app){
+    const productController=new Controller();
     app.route('/api/product').get(productController.getAllProduct);
     app.route('/api/product/:id').get(productController.getProductById)
                                 .delete(productController.deleteProductById)

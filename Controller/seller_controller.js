@@ -1,9 +1,10 @@
-const dal = require('../DBHandler/dalSeller');
-
-exports.addSeller=async function(req, res){
+import dalseller from '../DBHandler/dalSeller.js';
+const dal = new dalseller();
+export default class sellerController {
+addSeller=async function(req, res){
     res.render();
 }
-exports.getAllSeller = async function (req, res) {
+getAllSeller = async function (req, res) {
     let result = [];
     let session = req.session;
     if (session.user) {
@@ -15,7 +16,7 @@ exports.getAllSeller = async function (req, res) {
     }
 }
 
-exports.getSellerById = async function (req, res) {
+getSellerById = async function (req, res) {
     let result = [];
     let session = req.session;
     if (session.user) {
@@ -25,7 +26,7 @@ exports.getSellerById = async function (req, res) {
         res.send("please logion first ");
     }
 }
-exports.updateSellerById = async function (req, res) {
+updateSellerById = async function (req, res) {
     let result = [];
     let session = req.session;
     if (session.user) {
@@ -35,7 +36,7 @@ exports.updateSellerById = async function (req, res) {
         res.send("please logion first ");
     }
 }
-exports.deleteSellerById = async function (req, res) {
+deleteSellerById = async function (req, res) {
     let result = [];
     let session = req.session;
     if (session.user) {
@@ -46,8 +47,8 @@ exports.deleteSellerById = async function (req, res) {
     }
 }
 
-exports.sellerRegister = async function (req, res) {
+sellerRegister = async function (req, res) {
     let result = [];
     result = await dal.sellerRegister(req);
     res.send(result);
-}
+}}
